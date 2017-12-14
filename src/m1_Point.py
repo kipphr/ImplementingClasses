@@ -71,6 +71,7 @@ class Point(object):
         self.distance = self.distance + begin.get_distance_from(self)
 
     def move_by(self, dx, dy):
+        """moves a point to the right by dx and down by dy"""
         begin = Point(self.x, self.y)
         self.x = self.x + dx
         self.y = self.y + dy
@@ -81,11 +82,13 @@ class Point(object):
         """how many times a point has moved (to or by)"""
         return self.moves
 
-    def get_distance_from(self, other):
+    def get_distance_from(self, other_point):
         """distance from self to another point as the argument"""
-        return math.sqrt(((self.x-other.x)**2)+((self.y-other.y)**2))
+        return math.sqrt(((self.x-other_point.x)**2)+((self.y-other_point.y)**2))
 
     def get_distance_from_start(self):
+        """returns the distance from a point's
+        current position to its initial position when it was created"""
         return self.get_distance_from(Point(self.init_x, self.init_y))
 
     def get_distance_traveled(self):
