@@ -8,6 +8,7 @@ Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
 
 import math
 
+
 def main():
     """ Calls the   TEST   functions in this module. """
     run_test_init()
@@ -94,6 +95,18 @@ class Point(object):
     def get_distance_traveled(self):
         return self.distance
 
+    def closer_to(self, point1, point2):
+        """returns whichever point (2 points in argument) that self is closer to"""
+        if self.get_distance_from(point1) <= self.get_distance_from(point2):
+            return point1
+        else:
+            return point2
+
+    def halfway_to(self, other_point):
+        """returns a new point halfway between self & other_point (in argument)"""
+        avg_x = (self.x + other_point.x)/2
+        avg_y = (self.y + other_point.y)/2
+        return Point(avg_x, avg_y)
 
 
 ########################################################################
@@ -681,7 +694,7 @@ def run_test_closer_to():
     You may also use this example to test this method.
     """
     # ------------------------------------------------------------------
-    # TODO: 12.  Follow the same instructions as in TODO 3 above,
+    # done: 12.  Follow the same instructions as in done 3 above,
     #    but for the  closer_to  method specified above.
     # ------------------------------------------------------------------
     print()
@@ -736,42 +749,41 @@ def run_test_halfway_to():
 
     EXAMPLE: The following shows   halfway_to   in action.
     You may also use this example to test this method.
-
-        p1 = Point(10, 20)
-        p2 = Point(30, 100)
-
-        print()
-        print('Should be: Point(20.0, 60.0)')
-        print('Actual is:', p1.halfway_to(p2))
-        print('Should be: Point(20.0, 60.0)')
-        print('Actual is:', p2.halfway_to(p1))
-
-        print()
-        print('Should be: Point(10.0, 20.0)')
-        print('Actual is:', p1.halfway_to(p1))
-
-        p3 = Point(-10, 20)
-        p4 = Point(30, -100)
-
-        print()
-        print('Should be: Point(10.0, -40.0)')
-        print('Actual is:', p3.halfway_to(p4))
-        print('Should be: Point(10.0, -40.0)')
-        print('Actual is:', p3.halfway_to(p4))
-
-        print()
-        print('Should be: Point(-10.0, 20.0)')
-        print('Actual is:', p3.halfway_to(p3))
-
     """
     # ------------------------------------------------------------------
-    # TODO: 13.  Follow the same instructions as in TODO 3 above,
+    # done: 13.  Follow the same instructions as in done 3 above,
     #    but for the  halfway_to  method specified above.
     # ------------------------------------------------------------------
     print()
     print('-----------------------------------------------------------')
     print('Testing the   halfway_to   method of the Point class.')
     print('-----------------------------------------------------------')
+
+    p1 = Point(10, 20)
+    p2 = Point(30, 100)
+
+    print()
+    print('Should be: Point(20.0, 60.0)')
+    print('Actual is:', p1.halfway_to(p2))
+    print('Should be: Point(20.0, 60.0)')
+    print('Actual is:', p2.halfway_to(p1))
+
+    print()
+    print('Should be: Point(10.0, 20.0)')
+    print('Actual is:', p1.halfway_to(p1))
+
+    p3 = Point(-10, 20)
+    p4 = Point(30, -100)
+
+    print()
+    print('Should be: Point(10.0, -40.0)')
+    print('Actual is:', p3.halfway_to(p4))
+    print('Should be: Point(10.0, -40.0)')
+    print('Actual is:', p3.halfway_to(p4))
+
+    print()
+    print('Should be: Point(-10.0, 20.0)')
+    print('Actual is:', p3.halfway_to(p3))
 
 
 # ----------------------------------------------------------------------
